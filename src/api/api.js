@@ -1,11 +1,10 @@
-import * as axios from "axios"
-import profileReducer from "../redux/profile-reducer";
+import * as axios from "axios";
 
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        "API-KEY": "9246621e-6b6f-459a-add3-f8fa84bd8aa7"
+        "API-KEY": "9b89d1f8-78d1-4807-940e-5e5d87928903"
     }
 });
 
@@ -39,6 +38,15 @@ export const profileAPI = {
     },
     updateStatus(status) {
         return instance.put(`profile/status`, { status })
+    },
+    savePhoto(photoFile) {
+        const formData = new FormData();
+        formData.append('name', photoFile)
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
     }
 }
 

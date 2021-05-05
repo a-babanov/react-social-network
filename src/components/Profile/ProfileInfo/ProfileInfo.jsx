@@ -9,17 +9,20 @@ const ProfileInfo = React.memo((props) => {
         return <Preloader />
     }
 
+    let onMainPhotoSelected = (e) => {
+        if (e.target.files.length)
+            props.savePhoto(e.target.files[0])
+    }
+
     return (
         <div>
-            <div>
-                {
-                    /** 
-                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKS3nWdWW8perlDu5KZ8WAaOoOP96OMgB9Xg&usqp=CAU" alt="" />
-                    */
-                }
-            </div>
             <div className={s.descriptionBlock}>
                 <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhotoUrl} alt="" />
+                {
+                    props.isOwner === true
+                        ? <input type="file" onChange={onMainPhotoSelected} />
+                        : ""
+                }
                 <div>ava + description</div>
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
             </div>
