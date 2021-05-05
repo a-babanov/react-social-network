@@ -1,0 +1,20 @@
+.userPage {
+    padding: 10px;
+}
+
+.userPhoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.selectedPage
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.pages {
+    padding: 3px;
+}
