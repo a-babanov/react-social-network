@@ -23,10 +23,10 @@ const Pagination = React.memo(({ totalPageCount, pageSize, currentPage, onPageCh
         let displayPages = pages.map(p => {
             let res;
             if (p < 0) {
-                res = <span>...</span>
+                res = <span key={p}>...</span>
             }
             else {
-                res = <span className={currentPage === p ? s.selectedPage : s.pages}
+                res = <span key={p} className={currentPage === p ? s.selectedPage : s.pages}
                     onClick={() => { onPageChanged(p) }}>
                     {p}
                 </span>

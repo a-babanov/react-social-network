@@ -13,11 +13,11 @@ const MyPosts = React.memo((props) => {
     return (
         <div className={s.postsBlock}>
             <h3>My Posts</h3>
-            <AddPostReduxForm onSubmit={onAddPost} />
+            <AddPostReduxForm initialValues={props.newPostText} onSubmit={onAddPost} />
             <div className={s.posts}>
                 {
                     props.posts.map(p => {
-                        return <Post name={p.message} likesCount={p.likesCount} />;
+                        return <Post key={p.id} name={p.message} likesCount={p.likesCount} />;
                     })
                 }
             </div>
@@ -29,9 +29,9 @@ export default MyPosts
 
 const maxLength = maxFieldLength(10);
 
-const AddPostForm = (props) => {
+const AddPostForm = ({ handleSubmit }) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field component={TextArea} name="newPostText"
                     validate={[required, maxLength]} />

@@ -16,14 +16,14 @@ const Dialogs = (props) => {
             <div className={s.dialogsItems}>
                 <div>
                     {
-                        props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id} />)
+                        props.state.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} />)
                     }
                 </div>
             </div>
             <div className={s.messages}>
                 <div>
                     {
-                        props.state.messages.map(m => <Message message={m.message} />)
+                        props.state.messages.map(m => <Message key={m.id} message={m.message} />)
                     }
                 </div>
                 <AddNewMessageReduxForm onSubmit={addMessage} />

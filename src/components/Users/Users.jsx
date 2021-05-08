@@ -9,7 +9,7 @@ const Users = (props) => {
                 <div>
                     {
                         props.users.map(u => {
-                            return <User user={u} {...props} />
+                            return <User key={u.id} user={u} {...props} />
                         })
                     }
                 </div>
